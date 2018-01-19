@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+</head>
+
+<body ng-app="ait" ng-controller="trainer">
+    <form ng-submit="postData()"> <input type="text" ng-model="query"> <br> Intent: <select ng-model="intent">      
+        <option value="Write">Write</option>
+        <option value="Do">Perform</option>
+        <option value="remind">Remind</option>
+    </select> <br> Type: <select ng-model="type"> 
+        <option value="Assignment">Assignment</option>
+        <option value="Experiment">Experiment</option>
+        <option value="dTest">Descriptive Test</option>
+        <option value="oTest">Objective Test</option>
+        <option value="Tutorial">Tutorial</option>
+    </select> <br> Ordinal: <select ng-model="ordinal"> 
+        <option ng-repeat="x in ordinals">{{x}}</option>
+    </select> <br> Subject: <select ng-model="subject"> 
+        <option value="SE">SE</option>
+        <option value="DS">DS</option>
+        <option value="DMBI">DMBI</option>
+        <option value="AIT">AIT</option>
+        <option value="SWS">SWS</option>
+    </select><br><br> Day: <select ng-model="day">
+            <option value="1">Monday</option>
+        <option value="2">Tuesday</option>
+        <option value="3">Wednesday</option>
+        <option value="4">Thursday</option>
+        <option value="5">Friday</option>
+        <option value="6">Saturday</option>
+        <option value="7">Sunday</option>
+    </select> Subject: <select ng-model="week"> 
+        <option value="this">This</option>
+        <option value="next">Next</option>
+        <option value="next2">Next to Next</option>
+    </select><br> <input type="submit" value="Go"> <br>
+        <h1>Submitted - {{count}} times.</h1>
+        <h2>Response: 
+            <ul>
+                <li>Subject: <span ng-if="!res.subject.found">Not Found</span><span ng-if="res.subject.found">{{res.subject.class}}</span> </li>
+                <li>Type: <span ng-if="!res.type.found">Not Found</span><span ng-if="res.type.found">{{res.type.class}}</span> </li>
+                <li>Ordinals: {{res.ordinals}} </li>
+                <li>Day: <span ng-if="!res.day.found">Not Found</span><span ng-if="res.day.found">{{res.day.class}}</span> </li>
+            </ul>
+        </h2>
+        <h3 ng-if="res.subject.found" ng-repeat="x in res.subject.classifications">{{x.label}}: {{x.value}} </h3>
+        <h3 ng-if="res.type.found" ng-repeat="x in res.type.classifications">{{x.label}}: {{x.value}} </h3>
+        <h3 ng-if="res.day.found" ng-repeat="x in res.day.classifications">{{x.label}}: {{x.value}} </h3>
+    </form>
+    <script>
+        angular.module('ait', [])
+            .run(function () {
+                console.log('My app is ready.');
+            })
+            .controller('trainer', function ($scope, $http) {
+                $scope.ordinals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+                $scope.count = 0;
+                $scope.res = {};
+
+                $scope.postData = function () {
+                    var formData = {
+                        "query": $scope.query,
+                        "intent": $scope.intent,
+                        "subject": $scope.subject,
+                        "type": $scope.type,
+                        "ordinal": $scope.ordinal,
+                        "day": $scope.day,
+                        "week": $scope.week
+                    };
+                    console.log('Clicked go');
+                    console.log(formData);
+                    $http.post('/trainingSEIT', formData)
+                        .success(function (res, status) {
+                             $scope.count++;
+                             $scope.res = res;
+                         })
+                        .error(function () { $scope.error = "Sorry, could not post." });
+                };
+            });
+    </script>
+</body>
+
+</html>

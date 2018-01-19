@@ -1,0 +1,19 @@
+<div layout="column" layout-align="center" style="min-height: 40%">
+    <div style="background-color: #FFEB3B">
+        <ul flex-offset="20">
+            <li>Subject: <span ng-if="!res.subject.found">Not Found</span><span ng-if="res.subject.found">{{res.subject.class}}</span>                </li>
+            <li>Type: <span ng-if="!res.type.found">Not Found</span><span ng-if="res.type.found">{{res.type.class}}</span> </li>
+            <li>Ordinals: <span ng-repeat="y in res.ordinals">{{y+" "}}</span> </li>
+            <li>Day: <span ng-if="!res.day.found">Not Found</span><span ng-if="res.day.found">{{res.day.class}}</span> </li>
+            <br>
+            <br>
+            {{res.reply}}
+        </ul>
+    </div>
+    <div layout="row" layout-align="center center">
+        <md-input-container flex="75">
+            <input ng-model="toDoQuery">
+        </md-input-container>
+        <md-button class="md-primary md-fab material-icons" ng-click="postQuery()">send</md-button>
+    </div>
+</div>

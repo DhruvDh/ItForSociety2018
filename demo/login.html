@@ -1,0 +1,22 @@
+
+<div layout="column" style="height: 90%" layout-align="center center">
+  <div style="font-family: Pacifico; font-size: 32pt; text-shadow: 4px 4px #303F9F" flex="20">
+    Ait.
+  </div>
+  <md-input-container>
+    <label>Username</label>
+    <input ng-model="username">
+  </md-input-container>
+  <md-input-container>
+    <label>Password</label>
+    <input ng-model="password" type="password">
+  </md-input-container>
+  <div layout>
+  <md-button class="md-primary md-raised" ng-click="postData()">
+    Login
+  </md-button>
+  <md-button class="md-primary md-raised" ng-click="goToRegister()">
+    Register
+  </md-button>
+  </div>
+</div>

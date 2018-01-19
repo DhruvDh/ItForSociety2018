@@ -1,0 +1,28 @@
+{
+  "name": "snips",
+  "version": "0.0.1",
+  "description": "An NLP benchmark of a intent recognition module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "nodemon server.js",
+    "run": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhruvDh/snips.git"
+  },
+  "author": "Dhruv Dhamani",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/DhruvDh/snips/issues"
+  },
+  "homepage": "https://github.com/DhruvDh/snips#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "limdu": "^0.9.3",
+    "machine_learning": "^0.1.1",
+    "natural": "^0.5.4",
+    "serialization": "^0.2.0"
+  }
+}

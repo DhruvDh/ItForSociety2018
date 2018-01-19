@@ -1,0 +1,29 @@
+<div layout="column" style="height: 90%" layout-align="center center">
+  <div style="font-family: Pacifico; font-size: 32pt; text-shadow: 4px 4px #303F9F" flex="20">
+    Ait.
+  </div>
+  <form ng-submit="postData()" layout="column" layout-align="center center">
+    <md-input-container>
+      <label>Username</label>
+      <input ng-model="user" ng-required="true">
+    </md-input-container>
+    <md-input-container>
+      <label>Password</label>
+      <input ng-model="pass" ng-required="true">
+    </md-input-container>
+    <md-input-container>
+      <label>Batch</label>
+      <md-select ng-model="batch" ng-required="true">
+        <md-option ng-value="1">1</md-option>
+        <md-option ng-value="2">2</md-option>
+        <md-option ng-value="3">3</md-option>
+        <md-option ng-value="4">4</md-option>
+      </md-select ng-model="batch">
+    </md-input-container>
+    <md-button class="md-primary md-raised" type="submit">
+      Register
+    </md-button>
+    
+  </form>
+
+</div>

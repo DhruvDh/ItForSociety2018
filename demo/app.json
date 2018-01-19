@@ -1,0 +1,6 @@
+{
+    "name": "AIT Project",
+    "description": "A simple to-do list for students",
+    "repository": "https://github.com/DhruvDh/ait.git",
+    "image": "heroku/nodejs"
+}
