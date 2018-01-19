@@ -348,7 +348,7 @@ function POSTOT() {
     }
 }
 
-POStot();
+
 // var doit = new newClassifier(1); // 91.88601261692408 94.48915959683852
 // trainer(intents.all.list, doit);
 // var pos = 0;
@@ -362,16 +362,16 @@ POStot();
 
 
 var result = [];
-// readline.question('Enter query: ', (answer) => {
-//     switch (firstTierClassifier.classify(answer)) {
-//         case "Music": console.log(musicClassifier.classify(answer, 1)); break;
-//         case "Book": console.log(bookClassifier.classify(answer, 1)); break;
-//         case "Search": console.log(searchClassifier.classify(answer, 1)); break;
-//         case "GetWeather": console.log(firstTierClassifier.classify(answer, 1)); break;
-//         default: console.log("Invalid");
-//     }
-//     readline.close();
-// });
+readline.question('Enter query: ', (answer) => {
+    switch (firstTierClassifier.classify(answer)) {
+        case "Music": console.log(musicClassifier.classify(answer)); break;
+        case "Book": console.log(bookClassifier.classify(answer)); break;
+        case "Search": console.log(searchClassifier.classify(answer)); break;
+        case "GetWeather": console.log(firstTierClassifier.classify(answer)); break;
+        default: console.log("Invalid");
+    }
+    readline.close();
+});
 
 function justTimeIt() {
     var files = [];
@@ -401,16 +401,16 @@ function justTimeIt() {
     performance.clearMeasures('Total');
 }
 
-var iterations = 500;
-for (var i = 0; i < iterations; i++)
-    justTimeIt();
+// var iterations = 500;
+// for (var i = 0; i < iterations; i++)
+//     justTimeIt();
 
-var total = 0, avg = 0;
-result.forEach(run => {
-    total = total + run.total;
-    avg = avg + run.avg;
-})
-total = total / iterations;
-avg = avg / iterations;
-console.log('It took ' + total + ' seconds to classify ' + 13784 + ' queries.');
-console.log('Taking ' + avg + ' milliseconds per query on average.');
+// var total = 0, avg = 0;
+// result.forEach(run => {
+//     total = total + run.total;
+//     avg = avg + run.avg;
+// })
+// total = total / iterations;
+// avg = avg / iterations;
+// console.log('It took ' + total + ' seconds to classify ' + 13784 + ' queries.');
+// console.log('Taking ' + avg + ' milliseconds per query on average.');
